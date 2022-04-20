@@ -55,9 +55,12 @@ git branch -m main 切换master到main ， 现在github默认为main，git默认
 添加默认远程仓库地址
 git remote add origin git@github.com:voiceu-zuixin/node_ts_server.git
 
+git pull origin main --allow-unrelated-histories 拉取远程仓库的证书文件，这样才可以一起提交
+
 git add . 添加到暂存区
 
-git commit < message > 提交改次更改信息
+git commit -m 'message' 提交改次更改信息
+
 
 git push origin main 推送第一次代码到远程仓库
 
