@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   mode: 'development',
-  entry: "./src/main.ts",
+  entry: './src/main.ts',
   // devtool:"source-map",
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -14,7 +14,6 @@ module.exports = {
   },
   devServer: {
     //暂时不知道写什么
-
   },
   module: {
     rules: [
@@ -30,7 +29,7 @@ module.exports = {
   // 而此处的项目是打包的就是一个启动服务器代码
 
   // 可以尝试配置命令，每次打包后，用node运行打包好的js
-  target: 'node',
+  target: 'node'
   // externals: {
   //   fs: "commonjs fs",
   //   path: "commonjs path"
