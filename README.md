@@ -72,10 +72,10 @@ git push -u origin main 推送第一次代码到远程仓库
 
 ## 4、配置代码规范
 
-.editorconfig 让不同的编辑器遵循统一的标准，vscode 需要安装插件，webstorm 不用额外安装插件
+1、 .editorconfig 让不同的编辑器遵循统一的标准，vscode 需要安装插件，webstorm 不用额外安装插件
 目的是让多个开发人员维护一致的编码风格
 
-prettier 代码格式化工具，有点像 option+shift+f 快捷键，但是更强大，个人感觉和 editorconfig 有点类似
+2、 prettier 代码格式化工具，有点像 option+shift+f 快捷键，但是更强大，个人感觉和 editorconfig 有点类似
 npm i prettier -D
 
 创建 .prettierrc 指定规则
@@ -94,9 +94,19 @@ semi：语句末尾是否要加分号，默认值 true，选择 false 表示不�
 编辑脚本也可以进行所有文件一键格式化
 "prettier": "prettier --write ."
 
-eslint 代码规范
+3、 eslint 代码规范
 npm i eslint -D
 npx eslint --init 根据提示一步一步生成 .eslintrc.js
-注意要把该文件放进 .prettierignore里面，不然这里面都得让你修改格式
+注意要把.eslintrc.js文件放进 .prettierignore里面，不然这里面都得让你修改格式
 
+eslint --fix 命令可以进行修复
+
+4、 git husky
+在代码提交的时候，进行校验，之前的步骤是保证编写的时候要符合规则，但是不妨碍，不规则的代码进行提交
+这个工具就可以在提交的时候强行进行校验，不符合eslint的就不能进行提交
+配置脚本 ，意思是扩展名是  .js .ts 在src目录下的所有该类型文件，运行该命令可以修复这些文件
+"lint": "eslint --fix --ext .js,.ts src"
+.husky文件夹下的pre-commit修改 npm run lint
+
+之后，commit代码的时候，会自动进行检测规范，并修复
 
