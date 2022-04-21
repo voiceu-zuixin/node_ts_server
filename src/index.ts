@@ -1,6 +1,6 @@
 const ax = 1
 const ass = 2
-let aa = 4
-
+const aa = 4
+let aaa = 1
 
 export {}
