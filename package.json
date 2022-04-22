@@ -10,7 +10,7 @@
     "start": "ts-node-dev ./src/main.ts",
     "prettier": "prettier --write .",
     "prepare": "husky install",
-    "lint": "eslint --fix --ext .js,.ts src && git add ."
+    "lint": "eslint --fix --ext .js,.ts src"
   },
   "keywords": [],
   "author": "",
