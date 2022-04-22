@@ -8,7 +8,7 @@ console.log(aa, ass, ax)
 const aaa: any[] = 1
 
 //这里是ts报错，还有eslint报错的空格不标准等原因，提交时，会修改
-// const aab: any[] = 1
+const aab: any[] = 1
 
 // // 这里是eslint报错，在这个报错的时候，是修改之后，再次不改动也无法提交
 // const http = require('http')
