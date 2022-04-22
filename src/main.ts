@@ -6,7 +6,8 @@ console.log(test)
 // import的时候才有http的类型
 import http from 'http'
 const path = require('path')
-const aaas: number = '1'
+const aaas: number
+= '1'
 
 //这样引入可以看到类型，上面那种应该也可以，只不过http可能真的是any类型
 // import axios from "axios";
