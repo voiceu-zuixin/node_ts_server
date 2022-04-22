@@ -18,7 +18,7 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-      // 让require变得不报错
+      // 让require变得不报错，意思是这条规则不生效，0表示不生效
       '@typescript-eslint/no-var-requires': 0
     }
 }
