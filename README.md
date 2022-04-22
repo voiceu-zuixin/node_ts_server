@@ -75,6 +75,10 @@ git push -u origin main 推送第一次代码到远程仓库
 1、 .editorconfig 让不同的编辑器遵循统一的标准，vscode 需要安装插件，webstorm 不用额外安装插件
 目的是让多个开发人员维护一致的编码风格
 
+insert_final_newline = false # 始终在文件末尾插入一个新行
+该选项设置为true，会让人在最后一行打字的时候出现频闪，因为非要给你加一个空行，你又在中文打字，很难受
+建议为false
+
 2、 prettier 代码格式化工具，有点像 option+shift+f 快捷键，但是更强大，个人感觉和 editorconfig 有点类似
 npm i prettier -D
 
@@ -111,3 +115,23 @@ eslint --fix 命令可以进行修复
 之后，commit代码的时候，会自动进行检测规范，并修复
 
 实验证明，是检测修复了，但是提交的是之前的代码，不会把最新修正的代码一起add 和 commit
+理一下思路，为什么修改后的代码没有被一起提交，
+
+具体情景：
+1、我把错误代码写好；
+2、git add.
+3、git commit -m 'test-wrong-code'
+4、代码提交前自动检测、并修改、随后自动commit
+5、发现修改完成的代码出现在vscode的更改之下，连暂存区都不是，更别说提交修改后的代码
+
+分析原因：
+husky的作用，是在git命令时触发hook，自动执行预设指令，
+此处预设pre-commit命令，指令是 npm run lint
+再看看lint  "lint": "eslint --fix --ext .js,.ts src"
+只有fix命令，所以推断，执行完fix命令后，没有后续指令，便直接commit了，并没有把fix后的代码add进暂存区，
+因此可以尝试加一条 git add .的指令，使用&&，表示按序执行，&表示并列执行
+"lint": "eslint --fix --ext .js,.ts src && git add."
+
+但是要考虑一下代码出错的情况，代码出错的时候应该是直接提醒，并中断后续操作
+
+
