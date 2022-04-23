@@ -10,12 +10,15 @@
     "start": "ts-node-dev ./src/main.ts",
     "prettier": "prettier --write .",
     "prepare": "husky install",
-    "lint": "eslint --fix --ext .js,.ts src && git add ."
+    "lint": "eslint --fix --ext .js,.ts src && git add .",
+    "commit": "cz"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
     "@types/node": "^15.6.1",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",

@@ -208,3 +208,19 @@ const http = require('http')
 
 5、Commitizen
 用于代码提交的时候，提交信息的格式统一
+npm install commitizen -D
+
+--save-exact的作用就是固定依赖包的版本，不要带^或~，避免出现小版本。有利于版本统一。
+
+npx commitizen init cz-conventional-changelog --save-dev --save-exact
+然后提交的时候运行 npx cz 根据提示走就行
+
+package.json里面添加脚本  "commit":"cz"
+以后不用运行npx cz，也不是运行git commit，而是直接运行 你npm run commit
+
+6、commitlint
+限制不规范提交，刚刚的是主动的去规范提交，这个是防止不规范的提交
+
+
+
+
