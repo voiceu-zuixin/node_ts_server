@@ -16,7 +16,7 @@
   \*********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("\nlet test = \"我能出来，代表ts能转成js\";\nconsole.log(test);\n// 导入http模块\nconst http = __webpack_require__(/*! http */ \"http\");\n// import http from 'http'\n//这样引入可以看到类型，上面那种应该也可以，只不过http可能真的是any类型\n// import axios from \"axios\";\n// 创建web服务器实例\nconst server = http.createServer();\n// 绑定request事件，监听客户端请求\nserver.on(\"request\", (req, res) => {\n    //设置回传信息\n    res.write('Hello World + ts');\n    //告诉用户端请求结束\n    res.end();\n    console.log(\"Someone visit our web server.\");\n});\n// 启动服务器\nserver.listen(81, function () {\n    console.log(\"server running on http://127.0.0.1:80\");\n});\n\n\n//# sourceURL=webpack://node_ts_server/./src/main.ts?");
+eval("\nconst test = '我能出来，代表ts能转成js';\nconsole.log(test);\n// 导入http模块\nconst http = __webpack_require__(/*! http */ \"http\");\n// import的时候才有http的类型\n// import http from 'http'\n// const path = require('path')\nconst aaas = '1';\nconsole.log(aaas);\n//这样引入可以看到类型，上面那种应该也可以，只不过http可能真的是any类型\n// import axios from \"axios\";\n// 创建web服务器实例\nconst server = http.createServer();\n// 绑定request事件，监听客户端请求\nserver.on('request', (req, res) => {\n    //设置回传信息\n    res.write('Hello World + tsl');\n    //告诉用户端请求结束\n    res.end();\n    console.log('Someone visit our web server.');\n});\n// 启动服务器\nserver.listen(80, function () {\n    console.log('server running on http://127.0.0.1:80');\n});\n\n\n//# sourceURL=webpack://node_ts_server/./src/main.ts?");
 
 /***/ }),
 

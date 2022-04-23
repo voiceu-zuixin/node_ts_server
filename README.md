@@ -49,6 +49,8 @@ webpack-dev-server 是通过 express 进行搭建服务器的，如果用这个�
 而且如果第一个指令写这个，也会一直卡在第一个那里，进行动态监听文件的改变，而不会进行下一个指令
 所以使用--watch 也不行，会卡住，因此只能使用 ts-node-dev 模块，类似 nodemon 一样，不过浏览器不会自动刷新
 
+注意：Node 模块解析是 TypeScript 社区中最常用的，推荐用于大多数项目。 如果您在 TypeScript 中遇到导入和导出的解析问题，请尝试设置 moduleResolution: "node" 以查看它是否解决了问题。
+
 ## 3、新建 github 仓库，并上传
 
 在 github 上直接新建仓库
@@ -220,7 +222,30 @@ package.json里面添加脚本  "commit":"cz"
 
 6、commitlint
 限制不规范提交，刚刚的是主动的去规范提交，这个是防止不规范的提交
+npm i @commitlint/config-conventional @commitlint/cli -D
 
+根目录创建commlit.config.js 在里面配置commitlint
+
+module.exports = { extends: ['@commitlint/config-conventional'] }
+
+使用husky 的命令生存commit-msg的shell脚本文件，最好不要自己去生成
+
+npx husky add .husky/commit-msg "npx --no-install commitlint --edit $1"
+
+如果运行npx some-package --no-install，意味着告诉npx ，它应该仅执行。
+
+some-package，如果之前未安装，则不安装
+
+如果想让 npx 强制使用本地模块，不下载远程模块，可以使用--no-install参数。如果本地不存在该模块，就会报错。比如： 
+
+npx --no-install http-server
+
+但是有点疑惑commitlint和commitizen没有什么相关的配置，为什么能够运行这个工具的提交呢
+好像是都遵循着那个网上流行的提交风格，这个conventional-changelog，好像是angular的
+
+https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+
+> This is adapted from [Angular's commit convention](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular).
 
 
 

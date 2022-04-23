@@ -5,7 +5,6 @@ console.log(test)
 // const http = require('http')
 // import的时候才有http的类型
 import http from 'http'
-// const path = require('path')
 const aaas = '1'
 console.log(aaas)
 //这样引入可以看到类型，上面那种应该也可以，只不过http可能真的是any类型
@@ -25,6 +24,6 @@ server.on('request', (req: string | string[] | Record<string, unknown>, res: any
 })
 
 // 启动服务器
-server.listen(81, function () {
-  console.log('server running on http://127.0.0.1:81')
+server.listen(80, function () {
+  console.log('server running on http://127.0.0.1:80')
 })

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "serve": "webpack --watch && node ./dist/bundle.js",
+    "serve": "webpack && node ./dist/bundle.js",
     "start": "ts-node-dev ./src/main.ts",
     "prettier": "prettier --write .",
     "prepare": "husky install",
