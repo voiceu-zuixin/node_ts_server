@@ -1,17 +1,30 @@
-const ax = 1
-const ass = true
-const aa = '9'
+const test = '我能出来，代表ts能转成js'
+console.log(test)
 
-console.log(aa, ass, ax)
-
-//这里是ts报错，当只有ts报错的时候，eslint是检测不到的，所以可以直接提交
-// const aaa: any[] = 1
-
-//这里是ts报错，还有eslint报错的空格不标准等原因，提交时，会修改
-// const aab: any[] = 1
-
-console.log('我是index.ts')
-
-// // 这里是eslint报错，在这个报错的时候，是修改之后，再次不改动也无法提交
+// 导入http模块
 // const http = require('http')
-export {}
+// import的时候才有http的类型
+// import http from 'http'
+import http = require('http')
+const aaas = '1'
+console.log(aaas)
+//这样引入可以看到类型，上面那种应该也可以，只不过http可能真的是any类型
+// import axios from "axios";
+
+// 创建web服务器实例
+const server = http.createServer()
+
+// 绑定request事件，监听客户端请求
+server.on('request', (req: string | string[] | Record<string, unknown>, res) => {
+  //设置回传信息
+  res.write('Hello World + tsl')
+  //告诉用户端请求结束
+  res.end()
+
+  console.log('Someone visit our web server.')
+})
+
+// 启动服务器
+server.listen(80, function () {
+  console.log('server running on http://127.0.0.1:80')
+})
