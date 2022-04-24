@@ -8,5 +8,5 @@ router.get('/login/list', (req, res) => {
   console.log(req)
 })
 
-// module.exports = {router}
+// module.exports = router
 export default router
