@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <button id="btnGet">GET</button>
+  <button id="btnPost">POST</button>
+  <button id="btnJsonp">JSONP</button>
+
+  <script>
+    $(function () {
+      // 测试GET接口
+      $('#btnGet').on('click', function () {
+        $.ajax({
+          type: 'GET',
+          url: 'http://127.0.0.1/api/get',
+          data: {
+            name: 'hz',
+            age: 20,
+            type: 'get'
+          },
+          success: (res) => {
+            console.log(res)
+          }
+        })
+      })
+
+      // 测试POST接口
+      $('#btnPost').on('click', function () {
+        $.ajax({
+          type: 'POST',
+          url: 'http://127.0.0.1/api/post',
+          data: {
+            name: 'hz',
+            age: 20,
+            type: 'post'
+          },
+          success: (res) => {
+            console.log(res)
+          }
+        })
+      })
+
+
+      // 测试JSONP接口
+      $('#btnJsonp').on('click', function () {
+        $.ajax({
+          type: 'GET',
+          url: 'http://127.0.0.1/api/jsonp',
+          data: {
+            name: 'hz',
+            age: 20,
+            type: 'jsonp'
+          },
+          dataType:'jsonp',
+          success: (res) => {
+            console.log(res)
+          }
+        })
+      })
+
+    })
+  </script>
+</body>
+
+</html>

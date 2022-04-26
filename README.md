@@ -242,6 +242,4 @@ npx --no-install http-server
 
 https://github.com/conventional-changelog/commitlint/#what-is-commitlint
 
-
-
 > This is adapted from [Angular's commit convention](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular).

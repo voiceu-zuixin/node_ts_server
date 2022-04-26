@@ -10,9 +10,11 @@ import express = require('express')
 //导入路由模块
 // import router = require('./router/login')
 import router from './router/login'
+import api from './router/api'
 
 // 导入中间件函数
 import mw from './router/middleware'
+import cors from 'cors'
 
 // 创建web服务器
 const app = express()
@@ -45,8 +47,36 @@ const mw3 = (err: Error, req: unknown, res: unknown, next: () => void) => {
 app.use(express.static('public'))
 // app.use(express.static('./public'))
 
+// 全局中间件
 app.use(mw)
 app.use(router)
+
+// JSONP必须在CORS之前，不然先开了cors，后面jsonp就被当成是cors接口了
+// 只支持get
+app.get('/api/jsonp', (req, res) => {
+  console.log('jsonp')
+  console.log(req.query.callback)
+  // 获得客户端发送过来的回调函数的名字
+  const funcName = req.query.callback
+  // 得到要通过jsonp形式发送给客户端的数据
+  const data = {
+    name: 'fhz',
+    age: 20
+  }
+  // 根据前两部的数据，拼接出一个函数调用的字符串
+  const scriptStr = `${funcName}(${JSON.stringify(data)})`
+  // 把上一步拼接的字符串，响应给客户端的<script>标签进行解析执行
+  // ps：为什么script标签可以跨域，因为这是规定了普通get、post这些请求，不能跨域
+  // 但是标签中带有 src 属性的一类标签，比如 <img>  <iframe> <script>可以跨域请求
+  console.log(scriptStr)
+  // 在这里直接返回过去，是因为JQuery都封装好了
+  res.send(scriptStr)
+})
+
+app.use(express.urlencoded({ extended: false }))
+// 使用cors跨域中间件
+app.use(cors())
+app.use(api)
 
 //监听客户端等GET和POST请求，并向客户的响应具体的内容
 app.get('/user', (req, res) => {
