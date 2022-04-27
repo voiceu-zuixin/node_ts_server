@@ -7,6 +7,9 @@
 //要用这种写法，这样就可以用require了
 import express = require('express')
 
+// 导入数据库mysql模块
+import mysql from 'mysql'
+
 //导入路由模块
 // import router = require('./router/login')
 import router from './router/login'
@@ -18,6 +21,48 @@ import cors from 'cors'
 
 // 创建web服务器
 const app = express()
+
+// 建立与mysql的链接
+const db = mysql.createPool({
+  host: '127.0.0.1',
+  user: 'root',
+  password: 'admin',
+  database: 'my_db_01'
+})
+
+// 测试mysql能否正常工作
+db.query('select 1', (err, results) => {
+  if (err) console.log(err.message)
+
+  // 能打印[ RowDataPacket { '1': 1 } ] 就说明能正常进行
+  // console.log(results)
+})
+
+//查询users里的所有数据
+const sqlSelect = 'select * from users'
+db.query(sqlSelect, (err, results) => {
+  if (err) console.log(err.message)
+  console.log(results)
+})
+
+// mysql插入对象
+const user = {
+  username: 'pitter packer',
+  password: 321123
+}
+
+// 用? ? 来占位，后面按序替换
+const sqlInsert = 'insert into users (username, password) values (?, ?)'
+db.query(sqlInsert, [user.username, user.password], (err, results) => {
+  if (err) console.log(err.message)
+  if (results.affectedRows === 1) console.log('插入数据成功')
+})
+
+//再次查询插入之后的数据库，查看是否成功
+db.query(sqlSelect, (err, results) => {
+  if (err) console.log(err.message)
+  console.log(results)
+})
 
 // 定义局部中间件
 const mw2 = (req: unknown, res: unknown, next: () => void) => {
