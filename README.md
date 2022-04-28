@@ -206,7 +206,7 @@ const http = require('http')
 终于搞透了，不过还是想找找有没有把这种 ts 报错的也加在 eslint 里面，总感觉是我的配置不太合格才导致这种问题
 
 5、Commitizen
-用于代码提交的时候，提交信息的格式统一
+用于代码提交的时候，提交信息的格式统一，不怕自己手动敲那种feat xxx这种格式的提交信息的时候，打漏空格，全程按找提示走就行
 npm install commitizen -D
 
 --save-exact 的作用就是固定依赖包的版本，不要带^或~，避免出现小版本。有利于版本统一。
@@ -218,10 +218,10 @@ package.json 里面添加脚本 "commit":"cz"
 以后不用运行 npx cz，也不是运行 git commit，而是直接运行 你 npm run commit
 
 6、commitlint
-限制不规范提交，刚刚的是主动的去规范提交，这个是防止不规范的提交
+限制不规范提交，刚刚的是主动的去规范提交，这个是防止不规范的提交，比如自己手动敲的feat xxx，但是空格少了，就要限制不能提交，上面一个工具是根据提示自动化格式化提交信息，不妨碍有人就是要手动敲
 npm i @commitlint/config-conventional @commitlint/cli -D
 
-根目录创建 commlit.config.js 在里面配置 commitlint
+根目录创建 commitlint.config.js 在里面配置 commitlint
 
 module.exports = { extends: ['@commitlint/config-conventional'] }
 

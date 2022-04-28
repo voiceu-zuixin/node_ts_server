@@ -4,8 +4,10 @@
 // 导入express
 // import express from 'express'
 
-//要用这种写法，这样就可以用require了
+//要用这种写法，这样就可以用require了，或者下面这种写法
+// import express from 'express'
 import express = require('express')
+// const express = require('express')
 
 // 导入数据库mysql模块
 import mysql from 'mysql'
